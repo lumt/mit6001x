@@ -5,6 +5,8 @@ Using Fibonacci
 
 # Here is a function to calculate fib(n) using recursion
 def fib(n):
+	global numfibcalls
+	numfibcalls += 1
 	if n == 1 or n == 2:
 		return 1
 	else:
@@ -12,6 +14,8 @@ def fib(n):
 
 # Here is the same function using Memoization
 def fib_mem(n, d):
+	global numfibcalls1
+	numfibcalls1 += 1
 	if n in d:
 		return d[n]
 	else:
@@ -26,3 +30,12 @@ d = {1:1, 2:1}
 
 # much more efficient than recursion as function is presumably
 # called less amounts of time.
+
+numfibcalls = 0
+fibarg = 31
+print(fibarg, 'term in fib is: ', fib(fibarg))
+print('recursion calls: ', numfibcalls)
+
+numfibcalls1 = 0
+print(fibarg, 'term in fib is: ',fib_mem(fibarg,d))
+print('Memoization calls: ', numfibcalls1)
